@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Test</title>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="">
+                Logo
+            </div>
+            <div class="">
+                navigation
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <form id="urlForm" onsubmit="return Client.handleSubmit(event)">
+                    <input id="text" type="text" name="text" placeholder="Enter text" required>
+                    <button id="submitButton" type="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">Submit</button>
+                </form>
+                
+            </section>
+
+            <section>
+                <strong>Form Results:</strong>
+                <!-- <div id="results"></div> -->
+
+        <div class="section">
+            <h2>Sentiment Analysis</h2>
+            <pre id="sentimentResult"></pre>
+        </div>
+      
+ 
+            </section>
+        </main>
+
+        <footer>
+            <p>This is a footer</p>
+        </footer>
+        <!-- <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js') 
+                        .then((registration) => {
+                            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        })
+                        .catch((error) => {
+                            console.error('ServiceWorker registration failed: ', error);
+                        });
+                });
+            }
+        </script>
+         -->
+        
+    </body>
+    
+</html>
