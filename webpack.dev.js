@@ -30,7 +30,9 @@ export default {
                     'css-loader',
                     'sass-loader'
                 ],
-            }
+            },{
+                test: /\.(jpg|jpeg|png|gif|svg)$/,
+                type: 'asset/resource'}
         ]
     },
     plugins: [

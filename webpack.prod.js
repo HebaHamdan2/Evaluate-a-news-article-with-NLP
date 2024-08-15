@@ -41,11 +41,12 @@ export default {
                     'css-loader',
                     'sass-loader'
                 ],
-            },
-            {
-                test: /\.(jpg|jpeg|png|gif|svg)$/,
-                type: 'asset/resource',
-            }
+            },{
+            test: /\.(jpg|jpeg|png|gif|svg)$/,
+            type: 'asset/resource',
+            generator: {
+                filename: 'assets/[name][ext][query]'
+            }}
         ]
     },
     plugins: [

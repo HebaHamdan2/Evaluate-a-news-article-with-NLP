@@ -5,8 +5,6 @@ import dotenv from 'dotenv';
 import https from 'https';
 import querystring from 'querystring';
 import cors from 'cors';
-
-// Get the directory name of the current module
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 dotenv.config();
@@ -18,11 +16,7 @@ const apiKey = process.env.API_KEY;
 app.use(cors());
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
-
-// Serve static files from the "dist" directory
 app.use(express.static(path.join(__dirname, '../../dist')));
-
-// API route to handle proxying requests
 app.post('/api', (req, res) => {
     const { endpoint, url } = req.body;
 
@@ -59,8 +53,21 @@ app.post('/api', (req, res) => {
 
         response.on('end', () => {
             if (response.statusCode === 200) {
-                res.setHeader('Content-Type', 'application/json');
-                res.send(data);
+                // Check for error codes in the response
+                try {
+                    const jsonData = JSON.parse(data);
+                    if (jsonData.status && jsonData.status.code === '102') {
+                        res.status(429).json({
+                            error: 'API credit limit exceeded. Please check your subscription plan or upgrade your plan.'
+                        });
+                    } else {
+                        res.setHeader('Content-Type', 'application/json');
+                        res.send(data);
+                    }
+                } catch (e) {
+                    console.error('Error parsing API response:', e);
+                    res.status(500).send('Error processing API response');
+                }
             } else {
                 console.error(`API error: ${data}`);
                 res.status(response.statusCode).send(data);
@@ -77,12 +84,10 @@ app.post('/api', (req, res) => {
     request.end();
 });
 
-// Serve the main HTML file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server is listening on http://localhost:${port}`);
 });

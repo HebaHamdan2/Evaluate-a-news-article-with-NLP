@@ -9,6 +9,9 @@ import './styles/base.scss'
 import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
+// src/client/index.js
+import logo from './imgs/logo.png';
+document.getElementById('logo').src = logo;
 
 export{
     handleSubmit ,checkForArticle ,displayRes,submitArticle
