@@ -37,32 +37,32 @@ function showToast(message, type = 'info') {
         setTimeout(() => toast.remove(), 500); // Remove toast element after fade-out
     }, 3000);
 }
-
 async function handleSubmit(event) {
     event.preventDefault();
-    const inputElement = document.getElementById('text');
-    const formUrl = inputElement.value; 
-    if (Client.checkForArticle(formUrl)) {
-        try {
-            showLoading();
-            let result = await Client.submitArticle(formUrl, serverURL);
-            let Polarity = result.score_tag; 
-            let { agreement, subjectivity, confidence, irony } = result;
-            Client.displayRes(Polarity, agreement, subjectivity, confidence, irony);
-            hideLoading();
+    showLoading();
+    
+    try {
+        const url = document.getElementById('text').value;
+        if (!Client.checkForArticle(url)) {
+            console.log('Calling showToast with invalid URL');
+            showToast('Sorry, the URL you entered is not valid.', 'warning');
+            document.getElementById('loadingIndicator').style.display = 'none';
+            document.getElementById('text').value = '';
+            return;
+          }
+        if (valid) {
+            const result = await Client.submitArticle(url, serverURL);
+            Client.displayRes(result.score_tag, result.agreement, result.subjectivity, result.confidence, result.irony);
             showToast('Results have been successfully evaluated.', 'success');
-        } catch (error) {
-            hideLoading();
-            console.error('Submission error:', error);
-            showToast('An error occurred while submitting the article.', 'error');
-        } finally {
-            inputElement.value = '';
-        }
-    } else {
-        showToast('Sorry, the URL you entered is not valid.', 'warning');
-        inputElement.value = '';
+        } 
+    } catch (error) {
+        showToast('An error occurred while submitting the article.', 'error');
+    } finally {
+        hideLoading();
+        document.getElementById('text').value = '';
     }
 }
+
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupEventListeners);
@@ -70,4 +70,4 @@ if (document.readyState === 'loading') {
     setupEventListeners();
 }
 
-export { handleSubmit };
+export { handleSubmit ,showToast};

@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import { fileURLToPath } from 'url';
-
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 // Use `fileURLToPath` and `path.dirname` to mimic `__dirname`
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -47,6 +47,7 @@ export default {
             generator: {
                 filename: 'assets/[name][ext][query]'
             }}
+            
         ]
     },
     plugins: [
@@ -59,7 +60,12 @@ export default {
             clientsClaim: true,
             skipWaiting: true,
         }),
-        new MiniCssExtractPlugin({ filename: '[name].css' })
+        new MiniCssExtractPlugin({ filename: '[name].css' }),
+        new CopyWebpackPlugin({
+            patterns: [
+              { from: 'src/client/imgs/favicon.ico', to: 'assets/favicon.ico' }
+            ]
+          })
     ],
     devServer: {
         port: 8081,

@@ -26,7 +26,7 @@ export default {
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader', // For development, use style-loader instead of MiniCssExtractPlugin.loader
+                    'style-loader', 
                     'css-loader',
                     'sass-loader'
                 ],
@@ -44,7 +44,7 @@ export default {
     ],
     devServer: {
         port: 8000,
-        hot: true, // Enable hot module replacement
+        hot: true, 
         allowedHosts: 'all'
     }
 };
