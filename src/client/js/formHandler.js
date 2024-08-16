@@ -44,13 +44,10 @@ async function handleSubmit(event) {
     try {
         const url = document.getElementById('text').value;
         if (!Client.checkForArticle(url)) {
-            console.log('Calling showToast with invalid URL');
             showToast('Sorry, the URL you entered is not valid.', 'warning');
-            document.getElementById('loadingIndicator').style.display = 'none';
             document.getElementById('text').value = '';
             return;
-          }
-        if (valid) {
+          }else{
             const result = await Client.submitArticle(url, serverURL);
             Client.displayRes(result.score_tag, result.agreement, result.subjectivity, result.confidence, result.irony);
             showToast('Results have been successfully evaluated.', 'success');

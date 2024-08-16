@@ -2,11 +2,10 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>evaluate a news article</title>
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
     </head>
-
     <body>
 
         <header>
@@ -52,7 +51,7 @@
             </div>
         </footer>
         
-        <!-- <script>
+        <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('/service-worker.js') 
@@ -64,8 +63,16 @@
                         });
                 });
             }
-        </script>
-         -->
+
+ const logo = document.getElementById('logo');
+    logo.addEventListener('click', function() {
+        document.getElementById('text').value = '';
+        document.getElementById('sentimentResult').innerHTML = '';
+        
+    });
+     
+     </script>
+        
         
     </body>
     

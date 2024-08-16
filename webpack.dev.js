@@ -43,7 +43,7 @@ export default {
         new MiniCssExtractPlugin({ filename: '[name].css' })
     ],
     devServer: {
-        port: 8000,
+        port: 8001,
         hot: true, 
         allowedHosts: 'all'
     }
