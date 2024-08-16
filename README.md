@@ -5,6 +5,9 @@ This project allows users to enter a valid URL and receive an evaluation of the 
 The application provides insights into the article's polarity, confidence, agreement, subjectivity, and irony.
 The project utilizes tools such as Webpack for build automation, Sass for styling, and Jest for testing. It is designed to offer hands-on experience with these tools and to understand their roles in building a frontend application.
 
+https://github.com/user-attachments/assets/b22e5b67-c612-409e-ab6b-0451f53e029f
+
+
 # Technologies Used
 
 - **Webserver**: Node.js
