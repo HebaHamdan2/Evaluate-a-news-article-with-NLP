@@ -1,4 +1,4 @@
-const serverURL = 'http://localhost:8001/api';
+const serverURL = 'https://evaluatenewsarticle.netlify.app/api';
 
 function setupEventListeners() {
     const form = document.getElementById('urlForm');
@@ -11,10 +11,13 @@ function setupEventListeners() {
     }
 }
 
+
 function showLoading() {
     const loadingIndicator = document.getElementById('loadingIndicator');
     if (loadingIndicator) {
         loadingIndicator.style.display = 'block';
+    } else {
+        console.error('Loading indicator element not found');
     }
 }
 
@@ -22,8 +25,11 @@ function hideLoading() {
     const loadingIndicator = document.getElementById('loadingIndicator');
     if (loadingIndicator) {
         loadingIndicator.style.display = 'none';
+    } else {
+        console.error('Loading indicator element not found');
     }
 }
+
 
 function showToast(message, type = 'info') {
     const toastContainer = document.getElementById('toastContainer');
