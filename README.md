@@ -31,4 +31,41 @@ https://github.com/user-attachments/assets/b22e5b67-c612-409e-ab6b-0451f53e029f
 - **External API**: [MeaningCloud](https://www.meaningcloud.com/)
   - Delivers sentiment analysis to evaluate and interpret news articles.
 
+# Getting Started
 
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/HebaHamdan2/Evaluate-a-news-article-with-NLP.git
+   ```
+2. **Install Dependencies**
+   
+   Install the necessary npm packages:
+   ```bash
+   npm install
+   ```
+3. **Set Up Environment Variables**
+
+Create a .env file in the root of your project directory with the following content:
+```bash
+API_KEY=your_api_key
+```
+# Scripts
+Here are the available npm scripts:
+ - Start the Server
+  ```bash
+  npm start
+  ```
+
+ - Start Development Server
+  ```bash
+  npm run build-dev
+  ```
+ - Build for Production
+```bash
+npm run build-prod
+```
+- Run Tests
+```bash
+npm run test
+```
