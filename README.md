@@ -1,7 +1,8 @@
 # Overview
-Evaluate a news article with NLP is a single page application designed for the Udacity Frontend Web Developer Nanodegree. This project allows users to enter a valid URL and receive an evaluation of the article's sentiment using the [MeaningCloud](https://www.meaningcloud.com/) Sentiment Analysis API.
-The application provides insights into the article's polarity, confidence, agreement, subjectivity, and irony.
+Evaluate a news article with NLP is a single page application designed for the Udacity Frontend Web Developer Nanodegree.
+This project allows users to enter a valid URL and receive an evaluation of the article's sentiment using the [MeaningCloud](https://www.meaningcloud.com/) Sentiment Analysis API.
 
+The application provides insights into the article's polarity, confidence, agreement, subjectivity, and irony.
 The project utilizes tools such as Webpack for build automation, Sass for styling, and Jest for testing. It is designed to offer hands-on experience with these tools and to understand their roles in building a frontend application.
 
 # Technologies Used
