@@ -13,9 +13,10 @@ const port = process.env.PORT || 8001;
 const apiKey = process.env.API_KEY;
 
 // Middleware
-app.use(cors({
-    origin: 'https://evaluatenewsarticle.netlify.app'
-}));
+// app.use(cors({
+//     origin: 'https://evaluatenewsarticle.netlify.app'
+// }));
+app.use(cors());
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, '../../dist')));

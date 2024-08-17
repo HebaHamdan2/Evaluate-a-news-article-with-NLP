@@ -1,5 +1,5 @@
-const serverURL = 'https://evaluatenewsarticle.netlify.app/api';
-
+// const serverURL = 'https://evaluatenewsarticle.netlify.app/api';
+const serverURL='http://localhost:8001/api';
 function setupEventListeners() {
     const form = document.getElementById('urlForm');
     if (form) {

@@ -1,8 +1,8 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { fileURLToPath } from 'url';
 import webpack from 'webpack';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,11 +13,11 @@ export default {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/', 
+        publicPath: '/', // Ensure publicPath is set for correct asset loading
         libraryTarget: 'var',
         library: 'Client'
     },
-    devtool: 'inline-source-map', 
+    devtool: 'inline-source-map', // Source maps for easier debugging
     module: {
         rules: [
             {
@@ -33,14 +33,14 @@ export default {
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader', 
-                    'css-loader',   
-                    'sass-loader'  
+                    'style-loader', // Injects styles into the DOM
+                    'css-loader',   // Resolves CSS imports
+                    'sass-loader'   // Compiles Sass to CSS
                 ]
             },
             {
                 test: /\.(jpg|jpeg|png|gif|svg)$/,
-                type: 'asset/resource' 
+                type: 'asset/resource' // Handles image files
             }
         ]
     },
@@ -50,25 +50,17 @@ export default {
             filename: 'index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css' 
+            filename: '[name].css' // Extracts CSS into separate files
         }),
-        new webpack.HotModuleReplacementPlugin() 
+        new webpack.HotModuleReplacementPlugin() // Enables HMR
     ],
     devServer: {
         port: 8001,
         allowedHosts: 'all',
-        proxy: [
-            {
-                context: ['/api'],
-                target: 'http://localhost:8001', 
-                changeOrigin: true,
-                pathRewrite: { '^/api': '' } 
-            }
-        ],
         historyApiFallback: true,
         static: {
             directory: path.resolve(__dirname, 'dist')
         },
         hot: true
     }
-};    
+};

@@ -65,10 +65,11 @@ export default {
             patterns: [
               { from: 'src/client/imgs/favicon.ico', to: 'assets/favicon.ico' }
             ]
-          })
+          }),
+          
     ],
     devServer: {
-        port: 8081,
+        port: 8001,
         allowedHosts: 'all'
     }
 };
