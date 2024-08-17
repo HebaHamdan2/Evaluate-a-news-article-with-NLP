@@ -67,9 +67,5 @@ export default {
             ]
           }),
           
-    ],
-    devServer: {
-        port: 8001,
-        allowedHosts: 'all'
-    }
+    ]
 };
